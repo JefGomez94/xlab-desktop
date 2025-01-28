@@ -1,0 +1,25 @@
+# Ignorar entornos virtuales
+venv/
+backend/venv/
+
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+
+# Configuración de entornos virtuales de VSCode
+.vscode/
+
+# Archivos de dependencias y lock files
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Archivos de logs
+*.log
+
+# Compilaciones
+build/
+dist/
+
+# Ignorar dependencias de Node.js
+node_modules/
