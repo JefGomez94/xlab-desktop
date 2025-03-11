@@ -1,19 +1,30 @@
-import React, { useEffect, useState } from "react";
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { PrincipalPage } from "./pages/PrincipalPage";
+import { XlabPage } from "./pages/XlabPage";
+import { LoginPage } from "./pages/LoginPage";
+import { PrivateRoute } from './components/PrivateRoute';
 
 function App() {
-  const [data, setData] = useState("");
-
-  useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/data")
-      .then((response) => setData(response.data.message))
-      .catch((error) => console.error(error));
-  }, []);
-
-  return <div>{data ? <h1>{data}</h1> : <h1>Cargando...</h1>}</div>;
+  return (
+    
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/principalPage" 
+        element={
+          <PrivateRoute> 
+            <PrincipalPage /> 
+          </PrivateRoute>
+          }/>
+        <Route path="/xlabPage" 
+        element={
+          <PrivateRoute>
+            <XlabPage />
+          </PrivateRoute>
+        }/>
+      </Routes>
+    </HashRouter>
+  );
 }
 
 export default App;
